@@ -15,5 +15,8 @@ Proyecto creado con Vite y React en donde se agendaran citas para mascotas, la p
 <br>
 
 <b> Primer paciente creado y validaciones incorporadas a la página</b>
+<hr>
+
+<br>
 
 ![veterinaria2](https://github.com/OrlayMolina/Citas_Veterinaria/assets/111409267/f715fd73-2844-4bc8-86f7-752fac411e3a)
