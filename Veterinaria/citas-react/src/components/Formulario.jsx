@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Error from './Error';
 
-const Formulario = ({ pacientes, setPacientes }) => {
+const Formulario = ({ pacientes, setPacientes, paciente }) => {
 
   const [nombre, setNombre] = useState('');
   const [propietario, setPropietario] = useState('');
@@ -11,6 +11,17 @@ const Formulario = ({ pacientes, setPacientes }) => {
   const [sintomas, setSintomas] = useState('');
 
   const [error, setError] = useState(false);
+
+  useEffect( () => {
+    // La suma de todos los atributos del objecto es mayor a cero?. Si es mayor a cero, entonces el objeto tiene al menos un atributo.
+    if( Object.keys(paciente).length > 0){
+      setNombre(paciente.nombre);
+      setPropietario(paciente.propietario);
+      setEmail(paciente.email);
+      setFecha(paciente.fecha);
+      setSintomas(paciente.sintomas);
+    }
+  }, [paciente]);
 
   const generarId = () => {
     const random = Math.random.toString(36).slice(2);
@@ -155,7 +166,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
         <input 
           type="submit" 
           className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-all rounded-md shadow-md"
-          value="Agregar Paciente"
+          value={ paciente.id ? 'Editar Paciente' : 'Agregar Paciente' }
         />
 
       </form>
@@ -167,6 +178,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
 Formulario.propTypes = {
   pacientes: PropTypes.array.isRequired,
   setPacientes: PropTypes.func.isRequired,
+  paciente: PropTypes.object.isRequired,
 };
 
 export default Formulario
