@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import { useState } from "react";
 
-const Formulario = () => {
+const Formulario = ({ pacientes, setPacientes }) => {
 
   const [nombre, setNombre] = useState('');
   const [propietario, setPropietario] = useState('');
@@ -18,9 +19,29 @@ const Formulario = () => {
     if([nombre, propietario, email, fecha, sintomas].includes('')){
       console.log('Hay al menos un campo vacio');
       setError(true);
-    } else {
-      console.log('Todo esta bien');
-    }
+      return;
+    } 
+
+    setError(false);
+
+    // Crear el objeto con los datos del formulario.
+    const objetoPaciente = {
+      nombre,
+      propietario,
+      email,
+      fecha,
+      sintomas
+    } 
+
+    // Agregar el objeto al arreglo de pacientes sin modificar el arreglo original ya que solo lo debemos modificar con la función setPacientes.
+    setPacientes([...pacientes, objetoPaciente]);
+
+    // Reiniciar el formulario.
+    setNombre('');
+    setPropietario('');
+    setEmail('');
+    setFecha(''); 
+    setSintomas('');
 
   }
 
@@ -137,5 +158,10 @@ const Formulario = () => {
     </div>
   )
 }
+
+Formulario.propTypes = {
+  pacientes: PropTypes.array.isRequired,
+  setPacientes: PropTypes.func.isRequired,
+};
 
 export default Formulario
