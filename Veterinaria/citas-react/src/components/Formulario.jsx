@@ -12,6 +12,13 @@ const Formulario = ({ pacientes, setPacientes }) => {
 
   const [error, setError] = useState(false);
 
+  const generarId = () => {
+    const random = Math.random.toString(36).slice(2);
+    const fecha = Date.now().toString(36);
+
+    return random + fecha;
+  }
+
   const handleSubmit = (e) => {
     // Evitar que se envie el formulario antes que se que valide la información que se esta enviando.
     e.preventDefault(); 
@@ -31,7 +38,8 @@ const Formulario = ({ pacientes, setPacientes }) => {
       propietario,
       email,
       fecha,
-      sintomas
+      sintomas,
+      id: generarId()
     } 
 
     // Agregar el objeto al arreglo de pacientes sin modificar el arreglo original ya que solo lo debemos modificar con la función setPacientes.
