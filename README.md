@@ -1,4 +1,4 @@
-# Citas_Veterinaria
+# Citas Veterinaria
 Proyecto creado con Vite y React en donde se agendaran citas para mascotas, la persistencia es manejada con el Local Storage.
 
 <br>
@@ -29,5 +29,14 @@ Proyecto creado con Vite y React en donde se agendaran citas para mascotas, la p
 
 ![link](https://github.com/OrlayMolina/ECommerce/assets/111409267/24cda52b-f959-40f5-b823-f26306d42086)
 
+
+</a>
+
+<br>
+<b>Proyecto terminado</b>
+
+<a href="https://orlay-andres-molina-proyecto7.netlify.app/" target="_blank">
+
+![react](https://github.com/OrlayMolina/Citas_Veterinaria/assets/111409267/fdb22dbb-d2f9-44b4-a633-1cdc3934c374)
 
 </a>
