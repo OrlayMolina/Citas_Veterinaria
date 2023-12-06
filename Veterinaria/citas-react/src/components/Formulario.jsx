@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from "react";
 import Error from './Error';
 
-const Formulario = ({ pacientes, setPacientes, paciente }) => {
+const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
 
   const [nombre, setNombre] = useState('');
   const [propietario, setPropietario] = useState('');
@@ -49,12 +49,24 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
       propietario,
       email,
       fecha,
-      sintomas,
-      id: generarId()
+      sintomas
     } 
 
-    // Agregar el objeto al arreglo de pacientes sin modificar el arreglo original ya que solo lo debemos modificar con la función setPacientes.
-    setPacientes([...pacientes, objetoPaciente]);
+    if(paciente.id){
+      //Editando
+      objetoPaciente.id = paciente.id;
+
+      // Actualizar el arreglo de pacientes con el objeto paciente editado.
+      const pacientesActualizados = pacientes.map( pacienteState => pacienteState.id === paciente.id ? objetoPaciente : pacienteState)
+
+      setPacientes(pacientesActualizados);
+      setPaciente({});
+
+    }else{
+      objetoPaciente.id = generarId();
+      // Agregar el objeto al arreglo de pacientes sin modificar el arreglo original ya que solo lo debemos modificar con la función setPacientes.
+      setPacientes([...pacientes, objetoPaciente]);
+    }
 
     // Reiniciar el formulario.
     setNombre('');
@@ -179,6 +191,7 @@ Formulario.propTypes = {
   pacientes: PropTypes.array.isRequired,
   setPacientes: PropTypes.func.isRequired,
   paciente: PropTypes.object.isRequired,
+  setPaciente: PropTypes.func.isRequired
 };
 
 export default Formulario
