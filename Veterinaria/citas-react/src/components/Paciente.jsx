@@ -1,7 +1,16 @@
 import PropTypes from 'prop-types';
 
-const Paciente = ({paciente, setPaciente}) => {
+const Paciente = ({paciente, setPaciente, eliminarPaciente}) => {
   const {nombre, propietario, email, fecha, sintomas} = paciente;
+
+  const handleEliminar = () => {
+    const respuesta = window.confirm('¿Estas seguro que deseas eliminar este paciente?');
+
+    if(respuesta){
+      eliminarPaciente(paciente.id);
+    }
+  }
+
   return (
     <div className="mx-5 bg-white shadow-md px-5 py-10 rounded-lg mb-10">
         <p className="font-bold mb-3 text-gray-700 uppercase">Nombre: {''}
@@ -36,7 +45,7 @@ const Paciente = ({paciente, setPaciente}) => {
           <button 
             type='button' 
             className='py-2 px-10 bg-red-600 text-white font-bold uppercase hover:bg-red-700 rounded-lg'
-            
+            onClick={ handleEliminar}
           >Eliminar
           </button>
         </div>
@@ -48,6 +57,8 @@ const Paciente = ({paciente, setPaciente}) => {
 Paciente.propTypes = {
   paciente: PropTypes.object.isRequired,
   setPaciente: PropTypes.func.isRequired,
+  eliminarPaciente: PropTypes.func.isRequired
+  
 };
 
 export default Paciente

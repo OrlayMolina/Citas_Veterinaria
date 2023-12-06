@@ -24,11 +24,11 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
   }, [paciente]);
 
   const generarId = () => {
-    const random = Math.random.toString(36).slice(2);
+    const random = Math.random().toString(36).substr(2);
     const fecha = Date.now().toString(36);
-
+  
     return random + fecha;
-  }
+  };
 
   const handleSubmit = (e) => {
     // Evitar que se envie el formulario antes que se que valide la información que se esta enviando.
