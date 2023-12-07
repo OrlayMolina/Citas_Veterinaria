@@ -37,6 +37,7 @@ Proyecto creado con Vite y React en donde se agendaran citas para mascotas, la p
 
 <a href="https://orlay-andres-molina-proyecto7.netlify.app/" target="_blank">
 
-![react](https://github.com/OrlayMolina/Citas_Veterinaria/assets/111409267/483ae512-206c-4234-aae8-e297e6258dfc)
+![react](https://github.com/OrlayMolina/Citas_Veterinaria/assets/111409267/77e74601-d31d-498c-8cd1-7c7ebb000d2e)
+
 
 </a>
